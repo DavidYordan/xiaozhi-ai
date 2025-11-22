@@ -1,0 +1,6 @@
+[submodule "xiaozhi-esp32-server"]
+	path = xiaozhi-esp32-server
+	url = https://github.com/DavidYordan/xiaozhi-esp32-server.git
+[submodule "memU"]
+	path = memU
+	url = https://github.com/DavidYordan/memU.git
