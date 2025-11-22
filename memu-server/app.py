@@ -12,7 +12,7 @@ except Exception as e:
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MEMU_SRC = PROJECT_ROOT / "memU" / "src"
 if MEMU_SRC.exists():
-    sys.path.append(str(MEMU_SRC))
+    sys.path.insert(0, str(MEMU_SRC))
 
 from memu.app import MemoryService
 
