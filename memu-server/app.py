@@ -13,6 +13,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MEMU_SRC = PROJECT_ROOT / "memU" / "src"
 if MEMU_SRC.exists():
     sys.path.insert(0, str(MEMU_SRC))
+    for k in list(sys.modules.keys()):
+        if k.startswith("memu"):
+            m = sys.modules.get(k)
+            f = getattr(m, "__file__", "") if m else ""
+            if f and str(MEMU_SRC) not in f:
+                del sys.modules[k]
 
 from memu.app import MemoryService
 
