@@ -1,5 +1,6 @@
 # config.yaml
 
+```
 llm:
   provider: deepseek
   base_url: https://api.deepseek.com
@@ -13,3 +14,4 @@ server:
   resources_dir: "./data/resources"
   retrieve_method: "rag"
   top_k: 5
+```
