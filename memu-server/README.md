@@ -15,3 +15,7 @@ server:
   retrieve_method: "rag"
   top_k: 5
 ```
+
+```
+python -m uvicorn app:app --host 0.0.0.0 --port 8003 --reload
+```
