@@ -1,4 +1,5 @@
 import sys
+import logging
 from pathlib import Path
 from typing import Any
 
@@ -104,7 +105,8 @@ if __name__ == "__main__":
         import uvicorn
     except Exception as e:
         raise RuntimeError("uvicorn_required") from e
-    uvicorn.run(app, host="0.0.0.0", port=8765)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s - %(message)s")
+    uvicorn.run(app, host="localhost", port=8765, log_level="info")
 
 
 @app.post("/retrieve")
