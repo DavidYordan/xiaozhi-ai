@@ -104,7 +104,7 @@ if __name__ == "__main__":
         import uvicorn
     except Exception as e:
         raise RuntimeError("uvicorn_required") from e
-    uvicorn.run(app, host="0.0.0.0", port=8003)
+    uvicorn.run(app, host="0.0.0.0", port=8765)
 
 
 @app.post("/retrieve")
