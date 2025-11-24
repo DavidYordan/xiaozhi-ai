@@ -120,6 +120,7 @@ async def memorize(req: MemorizeReq):
             summary_prompt=req.summary_prompt,
         )
     except Exception as e:
+        logging.exception("/memorize failed")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -130,6 +131,7 @@ async def retrieve(req: RetrieveReq):
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        logging.exception("/retrieve failed")
         raise HTTPException(status_code=500, detail=str(e))
 
 
