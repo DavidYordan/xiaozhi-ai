@@ -25,7 +25,8 @@ from memu.app import MemoryService
 
 
 class MemorizeReq(BaseModel):
-    resource_url: str
+    resource_url: str | None = None
+    text: str | None = None
     modality: str
     summary_prompt: str | None = None
 
@@ -95,6 +96,14 @@ async def health() -> dict[str, str]:
 @app.post("/memorize")
 async def memorize(req: MemorizeReq):
     try:
+        if req.text is not None:
+            return await service.memorize_text(
+                text=req.text,
+                modality=req.modality,
+                summary_prompt=req.summary_prompt,
+            )
+        if req.resource_url is None:
+            raise HTTPException(status_code=400, detail="missing resource_url or text")
         return await service.memorize(
             resource_url=req.resource_url,
             modality=req.modality,
