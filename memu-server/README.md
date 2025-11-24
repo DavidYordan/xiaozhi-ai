@@ -14,4 +14,9 @@ server:
   resources_dir: "./data/resources"
   retrieve_method: "rag"
   top_k: 5
+
+database:
+  provider: "postgres"
+  dsn: "postgresql://username:password@127.0.0.1:5432/postgres"
+  embed_dim: 1536
 ```

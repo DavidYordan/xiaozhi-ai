@@ -68,7 +68,11 @@ def build_service() -> MemoryService:
     }
 
     blob_cfg = {"resources_dir": resources_dir}
-    db_cfg = {"provider": "memory"}
+    db_raw = dict(cfg.get("database", {}))
+    db_provider = str(db_raw.get("provider", "memory")).strip()
+    db_dsn = str(db_raw.get("dsn", "")).strip()
+    db_embed_dim = int(db_raw.get("embed_dim", 1536))
+    db_cfg = {"provider": db_provider, "dsn": db_dsn, "embed_dim": db_embed_dim}
     retrieve_cfg = {"method": retrieve_method, "top_k": top_k}
 
     return MemoryService(
