@@ -4,3 +4,6 @@
 [submodule "memU"]
 	path = memU
 	url = https://github.com/DavidYordan/memU.git
+[submodule "voiceprint-api"]
+	path = voiceprint-api
+	url = https://github.com/DavidYordan/voiceprint-api.git
