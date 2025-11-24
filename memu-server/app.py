@@ -52,6 +52,11 @@ def build_service() -> MemoryService:
     embed_model = str(llm.get("embed_model", "deepseek-embedding")).strip()
     client_backend = str(llm.get("client_backend", "httpx")).strip()
     endpoint_overrides = dict(llm.get("endpoint_overrides", {}))
+    chat_base_url = str(llm.get("chat_base_url", base_url)).strip()
+    chat_api_key = str(llm.get("chat_api_key", api_key)).strip()
+    embed_base_url = str(llm.get("embed_base_url", base_url)).strip()
+    embed_api_key = str(llm.get("embed_api_key", api_key)).strip()
+    embed_dimensions = llm.get("embed_dimensions", None)
 
     server = dict(cfg.get("server", {}))
     resources_dir = str(server.get("resources_dir", str(PROJECT_ROOT / "data" / "resources")))
@@ -66,6 +71,11 @@ def build_service() -> MemoryService:
         "chat_model": chat_model,
         "embed_model": embed_model,
         "endpoint_overrides": endpoint_overrides,
+        "chat_base_url": chat_base_url,
+        "chat_api_key": chat_api_key,
+        "embed_base_url": embed_base_url,
+        "embed_api_key": embed_api_key,
+        "embed_dimensions": embed_dimensions,
     }
 
     blob_cfg = {"resources_dir": resources_dir}
