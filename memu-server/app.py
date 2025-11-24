@@ -100,15 +100,6 @@ async def memorize(req: MemorizeReq):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-if __name__ == "__main__":
-    try:
-        import uvicorn
-    except Exception as e:
-        raise RuntimeError("uvicorn_required") from e
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s - %(message)s")
-    uvicorn.run(app, host="localhost", port=8765, log_level="info")
-
-
 @app.post("/retrieve")
 async def retrieve(req: RetrieveReq):
     try:
@@ -117,3 +108,12 @@ async def retrieve(req: RetrieveReq):
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    try:
+        import uvicorn
+    except Exception as e:
+        raise RuntimeError("uvicorn_required") from e
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s - %(message)s")
+    uvicorn.run(app, host="localhost", port=8765, log_level="info")
